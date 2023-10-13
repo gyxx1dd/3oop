@@ -5,34 +5,44 @@ using namespace std;
 
 int main()
 {
-    Osoba person1("Maksim", "Lavrov", 1995);
-    Osoba person2("Vadim", "Lipa", 1996);
-
-    cout << "Input LastName to search: " << endl;
-    string searchLastName;
-    cin >> searchLastName;
-
-
-    try {
-        if (person1.SearchLastName(searchLastName))
-        {
-            cout << "Person found!" << endl;
-            cout << person1 << endl;
-        }
-        else if (person2.SearchLastName(searchLastName))
-        {
-            cout << "Person found!" << endl;
-            cout << person2 << endl;
-        }       
-        else
-        {
-            throw "Not found";
-        }
-    }
-    catch (const char* ex)
+    const int array = 3;
+    Osoba people[array] =
     {
-        cout << ex << endl;
+        Osoba("Petrov", "Maksim", 1985),
+        Osoba("Lavrov", "Danil",1999),
+        Osoba("Hhhchc","Jjcjc",1954)
+    };
+    Osoba g;
+
+    string Name1;
+    cout << "Input LastName" << endl;
+    cin >> Name1;
+    int Year1;
+    cout << "Input Year" << endl;
+    cin >> Year1;
+
+    bool found = false;
+    for (int i = 0; i < array; i++)
+    {
+        if (people[i].GetLastName() == Name1 && people[i].GetYear() == Year1)
+        {
+            found = true;
+            cout << "Found people" << endl;
+            cout << people[i];
+        }
     }
+    if (!found)
+    {
+        cout << "Not found" << endl;
+    }
+
+
+
+
+    
+    
+    
+ 
 
     return 0;
 }

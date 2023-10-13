@@ -14,20 +14,64 @@ private:
 	int Year;
 
 public:
-	Osoba() : LastName(""), Name(""), Year(0) {}
-	Osoba(const string& Name1, const string& LastName1, int Year1):Name(Name1), LastName(LastName1), Year(Year1){}
+	Osoba()
+	{
+
+	}
+	Osoba(const string& LastName, const string& Name, const int Year)
+	{
+		this->LastName = LastName;
+		this->Name = Name;
+		this->Year = Year;
+	}
+
+	string GetName()
+	{
+		return Name;
+	}
+
+	string GetLastName()
+	{
+		return LastName;
+	}
+
+	int GetYear()
+	{
+		return Year;
+	}
+
+	
+
+	Osoba& operator=(const Osoba& other) {
+		if (this == &other) {
+			return *this;
+		}
+		LastName = other.LastName;
+		Name = other.Name;
+		Year = other.Year;
+
+		return *this;
+	}
 
 	friend istream& operator>>(istream& input, Osoba& Osoba)
 	{
-		cout << "Input LastName" << endl;
-		input >> Osoba.LastName;
+		try {
+			cout << "Input LastName" << endl;
+			input >> Osoba.LastName;
 
-		cout << "Input Name" << endl;
-		input >> Osoba.Name;
+			cout << "Input Name" << endl;
+			input >> Osoba.Name;
 
-		cout << "Input Year" << endl;
-		input >> Osoba.Year;
-
+			cout << "Input Year" << endl;
+			input >> Osoba.Year;
+			if (input.fail()) {
+				throw "Invalid input";
+			}
+		}
+		catch (const char* ex)
+		{
+			cout << ex << endl;
+		}
 		return input;
 	}
 
@@ -38,12 +82,6 @@ public:
 		output << "Year:" << Osoba.Year << endl;
 		return output;
 	}
-
-	bool SearchLastName(const string& LastName1)
-	{
-		return LastName == LastName1;
-	}
-
 
 
 };
