@@ -29,6 +29,8 @@ public:
 	{
 		return Name;
 	}
+	int method(string Name1, int Year1, int array, Osoba people);
+
 
 	string GetLastName()
 	{
@@ -38,6 +40,14 @@ public:
 	int GetYear()
 	{
 		return Year;
+	}
+
+	bool Search(const string& lastName) const {
+		return (LastName == lastName);
+	}
+
+	bool Search(int year) const {
+		return (Year == year);
 	}
 
 	
