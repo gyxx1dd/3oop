@@ -25,23 +25,6 @@ public:
 		this->Year = Year;
 	}
 
-	string GetName()
-	{
-		return Name;
-	}
-	int method(string Name1, int Year1, int array, Osoba people);
-
-
-	string GetLastName()
-	{
-		return LastName;
-	}
-
-	int GetYear()
-	{
-		return Year;
-	}
-
 	bool Search(const string& lastName) const {
 		return (LastName == lastName);
 	}
